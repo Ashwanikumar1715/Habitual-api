@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const cors = require('cors');
 
-const FRONTEND_URL = 'http://localhost:5173';
+const FRONTEND_URL = 'https://habitual-e2js.onrender.com';
 
 // Middleware configuration
 module.exports = (app) => {
