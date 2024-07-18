@@ -1,15 +1,15 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const checkinSchema = new Schema(
   {
-    date: { type: String, required: [true, 'Date is required.'] },
+    date: { type: String, required: [true, "Date is required."] },
     habit: {
       type: Schema.Types.ObjectId,
-      ref: 'MyHabit',
+      ref: "MyHabit",
     },
     user: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
   },
   {
@@ -17,6 +17,6 @@ const checkinSchema = new Schema(
   }
 );
 
-const Checkin = model('Checkin', checkinSchema);
+const Checkin = model("Checkin", checkinSchema);
 
 module.exports = Checkin;

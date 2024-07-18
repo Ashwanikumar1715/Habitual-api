@@ -1,17 +1,15 @@
-const jwt = require('jsonwebtoken');
-
-
+const jwt = require("jsonwebtoken");
 
 const isAuthenticated = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
     if (!token) {
-      return res.status(401).json({ message: 'No token found in the headers' });
+      return res.status(401).json({ message: "No token found in the headers" });
     }
-    token = token.replace('Bearer ', '');
+    token = token.replace("Bearer ", "");
 
     const payload = jwt.verify(token, process.env.TOKEN_SECRET, {
-      algorithms: ['HS256'],
+      algorithms: ["HS256"],
     });
 
     req.userId = payload._id;

@@ -1,7 +1,7 @@
-const router = require('express').Router();
-const MyHabit = require('../models/MyHabit.model');
+const router = require("express").Router();
+const MyHabit = require("../models/MyHabit.model");
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const userId = req.userId;
   try {
     const newHabit = await MyHabit.create({
@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.put('/:habitId', async (req, res, next) => {
+router.put("/:habitId", async (req, res, next) => {
   try {
     const { habitId } = req.params;
     const userId = req.userId;
@@ -35,7 +35,7 @@ router.put('/:habitId', async (req, res, next) => {
   }
 });
 
-router.delete('/:habitId', async (req, res, next) => {
+router.delete("/:habitId", async (req, res, next) => {
   try {
     const { habitId } = req.params;
     await MyHabit.findByIdAndDelete(habitId);
@@ -45,7 +45,7 @@ router.delete('/:habitId', async (req, res, next) => {
   }
 });
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const userId = req.userId;
   try {
     const allUserHabits = await MyHabit.find({
@@ -57,7 +57,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:habitId', async (req, res, next) => {
+router.get("/:habitId", async (req, res, next) => {
   try {
     const { habitId } = req.params;
     const habit = await MyHabit.findById(habitId);

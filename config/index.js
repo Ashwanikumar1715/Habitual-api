@@ -1,26 +1,21 @@
-const express = require('express');
+const express = require("express");
 
-const logger = require('morgan');
+const logger = require("morgan");
 
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 
-const cors = require('cors');
+const cors = require("cors");
 
-const FRONTEND_URL = 'https://habitual-e2js.onrender.com';
+const FRONTEND_URL = "https://habitual-e2js.onrender.com";
 
-// Middleware configuration
 module.exports = (app) => {
-  app.set('trust proxy', 1);
+  app.set("trust proxy", 1);
   app.use(
     cors({
       origin: FRONTEND_URL,
     })
   );
 
-  // In development environment the app logs
-  app.use(logger('dev'));
-
-  // To have access to `body` property in the request
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());

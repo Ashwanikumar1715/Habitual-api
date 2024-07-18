@@ -1,7 +1,7 @@
-const router = require('express').Router();
-const Checkin = require('../models/Checkin.model');
+const router = require("express").Router();
+const Checkin = require("../models/Checkin.model");
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const userId = req.userId;
 
   try {
@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.delete('/:checkinId', async (req, res, next) => {
+router.delete("/:checkinId", async (req, res, next) => {
   try {
     const { checkinId } = req.params;
     await Checkin.findByIdAndDelete(checkinId);
@@ -25,7 +25,7 @@ router.delete('/:checkinId', async (req, res, next) => {
   }
 });
 
-router.get('/:habitId', async (req, res, next) => {
+router.get("/:habitId", async (req, res, next) => {
   const { habitId } = req.params;
   try {
     const allCheckins = await Checkin.find({
@@ -37,7 +37,7 @@ router.get('/:habitId', async (req, res, next) => {
   }
 });
 
-router.delete('/delete-all/:habitId', async (req, res, next) => {
+router.delete("/delete-all/:habitId", async (req, res, next) => {
   try {
     const { habitId } = req.params;
     const deletedCheckins = await Checkin.deleteMany({ habit: habitId });
